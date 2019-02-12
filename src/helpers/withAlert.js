@@ -5,8 +5,8 @@ const withAlert = ({ event, message }) => {
   return Component => {
     // return a new component
     const AugmentedComponent = props => {
-      const newProps = { ...props }; // always clone props if you need to mutate them
-      newProps[event] = () => alert(message);
+      const newProps = { ...props }; // Règle de React, ne jamais modifier les props, il faut les cloner si on veut en faire qch
+      newProps[event] = () => alert(message); // Rajout d'une nouvelle entrée à l'objet newProps qui a le nom de l'event reçu
       return <Component {...newProps} />;
     };
     return AugmentedComponent;
